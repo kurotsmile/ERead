@@ -2,7 +2,7 @@ class Ebook_Category{
 
     all_item=null;
     show_for_home(){
-        $("#all_box").html("Loading..");
+        $("#all_box").html(e.loading());
         if(this.all_item==null){
             $.getJSON(e.url_data_book_category, function (data) {
                 ebook_category.all_item=data["all_item"];
@@ -16,6 +16,7 @@ class Ebook_Category{
     }
 
     loadListByData(data){
+        $("#main_title").html("Book topics and categories");
         $("#all_box").html("");
         $.each(data,function(index,cat){
             var catEmp=e.box(cat.name,'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',cat.icon);
@@ -30,7 +31,7 @@ class Ebook_Category{
     }
 
     view_all(){
-        alert("sdsd");
+        this.loadListByData(this.all_item);
     }
 }
 
