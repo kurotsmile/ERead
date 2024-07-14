@@ -9,7 +9,10 @@ class Ebook_Category{
                 if(index==12) return false;
                 var catEmp=e.box(cat.name,'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',cat.icon);
                 $(catEmp).click(function(){
-                    alert("sdsd");
+                    Swal.fire({
+                        title:"Category",
+                        Text:cat.name
+                    })
                 });
                 $("#all_box").append(catEmp);
             });
