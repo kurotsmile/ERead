@@ -4,6 +4,9 @@ class Eread{
     url_data_book_category="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/ebook_category.json";
 
     onLoad(){
+        cr.onLoad();
+        cr.setSiteName("ERead");
+        cr.setSiteUrl("https://kurotsmile.github.io/ERead");
         cr.loadJs("js/ebook_category.js","ebook_category","show_for_home");
         cr.loadJs("js/ebook.js","ebook","show_for_home");
     }
