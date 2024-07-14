@@ -2,6 +2,8 @@
 
 ERead is a web application that allows users to read and download a vast collection of ebooks and novels. With ERead, you have access to a diverse library of literary works, catering to all tastes and preferences.
 
+<img scr="https://github.com/kurotsmile/ERead/blob/919f5ae008d8baf9ac4f0666322015ef8a580ff3/images/icon.png" width="200px"/>
+
 ## Features
 
 - **Large Collection of Ebooks:** Explore and download from an extensive library of books and novels.
