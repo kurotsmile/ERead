@@ -28,7 +28,8 @@ class Ebook{
     }
 
     view_all(){
-        alert("sdsd");
+        var cats=cr.limitItem(cr.shuffle(ebook.all_item),20);
+        ebook.loadListByData(cats);
     }
 
     show_info(data){
@@ -45,8 +46,8 @@ class Ebook{
         else col='col-12';
 
         $("#main_title").html(data.title);
-        $("#all_box").append('<div class="col-6">'+data.describe+'</div>');
-        $("#all_box").append('<div class="col-6 text-center"><img class="rounded w-100" src="'+data.avatar+'"/><br/><button class="btn  btn-primary m-3" onclick="cr.show_pay();"><i class="fas fa-download"></i> Download Ebook ('+data.title+'.epub)</button></div>');
+        $("#all_box").append('<div class="col-8">'+data.describe+'</div>');
+        $("#all_box").append('<div class="col-4 text-center"><img class="rounded w-100" src="'+data.avatar+'"/><br/><button class="btn  btn-primary m-3" onclick="cr.show_pay();"><i class="fas fa-download"></i> Download Ebook ('+data.title+'.epub)</button></div>');
         $("#all_box").append(e.box('Author',data.author,'fas fa-user-graduate'));
         $("#all_box").append(e.box('Language',data.lang,'fas fa-globe'));
         $("#all_box").append(e.box('Category',data.category,'fas fa-mosque'));
