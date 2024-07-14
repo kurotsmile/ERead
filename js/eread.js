@@ -32,7 +32,7 @@ class Eread{
         return box_obj;
     }
 
-    item(name='Full Name',author='@Carrot'){
+    item(name='Full Name',author='@Carrot',tip=''){
         var itemEmp=$(`
             <div role="button" class="media text-muted pt-3 col-6">
                 <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
@@ -42,6 +42,7 @@ class Eread{
                             <a href="#">Read Now</a>
                         </div>
                         <span class="d-block">${author}</span>
+                        ${tip}
                 </div>
             </div> 
         `);
