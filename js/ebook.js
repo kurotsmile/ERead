@@ -2,6 +2,8 @@ class Ebook{
 
     all_item=null;
 
+    book_cur=null;
+
     show_for_home(){
         $("#all_item").html(e.loading());
         if(this.all_item==null){
@@ -18,9 +20,11 @@ class Ebook{
 
     loadListByData(data){
         $("#all_item").html("");
+        $("#body_title").html("Books you may be interested in");
         $.each(data,function(index,book){
             var bookEmp=e.item(book.title,"@"+book.author);
             $(bookEmp).click(function(){
+                e.ebook.book_cur=book;
                 ebook.show_info(book);
             });
             $("#all_item").append(bookEmp);
@@ -47,7 +51,7 @@ class Ebook{
 
         $("#main_title").html(data.title);
         $("#all_box").append('<div class="col-8">'+data.describe+'</div>');
-        $("#all_box").append('<div class="col-4 text-center"><img class="rounded w-100" src="'+data.avatar+'"/><br/><button class="btn  btn-primary m-3" onclick="cr.show_pay();"><i class="fas fa-download"></i> Download Ebook ('+data.title+'.epub)</button></div>');
+        $("#all_box").append('<div class="col-4 text-center"><img class="rounded w-100" src="images/icon.png"/><br/><button class="btn  btn-primary m-3" onclick="cr.show_pay();"><i class="fas fa-download"></i> Download Ebook ('+data.title+'.epub)</button></div>');
         $("#all_box").append(e.box('Author',data.author,'fas fa-user-graduate'));
         $("#all_box").append(e.box('Language',data.lang,'fas fa-globe'));
         $("#all_box").append(e.box('Category',data.category,'fas fa-mosque'));
@@ -56,12 +60,23 @@ class Ebook{
         $("#all_box").append('<div class="col-12 mt-3"><h6 class="mb-0">Table of contents</h6></div>');
 
         $.each(Contents,function(index,c){
-            $("#all_box").append(e.box(c.title,'Chapter '+(index+1),'',col));
+            var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye',col);
+            $(empChapter).click(()=>{
+                e.ebook.show_chapter(index);
+            });
+            $("#all_box").append(empChapter);
         });
-        
+
+        this.show_chapter(0);
+    }
+
+    show_chapter(index){
+        var Contents=this.book_cur["contents"];
         var html_body='';
-        html_body+='<div class="p-3">'+Contents[0].content+'</div>';
-        
+        html_body+='<div class="p-3 col-12">'+Contents[index].content+'</div>';
+        html_body+='<div class="col-6 text-center"><i class="fas fa-step-backward text-primary"></i></div>';
+        html_body+='<div class="col-6 text-center"><i class="fas fa-step-forward text-primary"></i></div>';
+        $("#body_title").html(Contents[index].title);
         $("#all_item").html(html_body);
     }
 }

@@ -53,12 +53,14 @@ class Eread{
         $("#main_title").html("Privacy Policy");
         cr.top();
         cr.show_pp("#all_box");
+        ebook.show_for_home();
     }
 
     show_tos(){
         $("#main_title").html("Terms Of Service");
         cr.top();
         cr.show_tos("#all_box");
+        ebook.show_for_home();
     }
 
     loading(){
