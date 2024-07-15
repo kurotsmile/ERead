@@ -4,6 +4,8 @@ class Ebook{
 
     book_cur=null;
 
+    index_chapter_cur=0;
+
     show_for_home(){
         $("#all_item").html(e.loading());
         if(this.all_item==null){
@@ -22,6 +24,19 @@ class Ebook{
         $("#all_item").html("");
         $("#body_title").html("Books you may be interested in");
         $.each(data,function(index,book){
+            var bookEmp=e.item(book.title,"@"+book.author);
+            $(bookEmp).click(function(){
+                e.ebook.book_cur=book;
+                ebook.show_info(book);
+            });
+            $("#all_item").append(bookEmp);
+        });
+    }
+
+    loadListByCat(id_cat){
+        $("#all_item").html("");
+        $.each(this.all_item,function(index,book){
+            if(book.category!=id_cat) return true;
             var bookEmp=e.item(book.title,"@"+book.author);
             $(bookEmp).click(function(){
                 e.ebook.book_cur=book;
@@ -60,13 +75,14 @@ class Ebook{
         $("#all_box").append('<div class="col-12 mt-3"><h6 class="mb-0">Table of contents</h6></div>');
 
         $.each(Contents,function(index,c){
-            var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye',col);
+            var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col);
             $(empChapter).click(()=>{
                 e.ebook.show_chapter(index);
             });
             $("#all_box").append(empChapter);
         });
 
+        this.index_chapter_cur=0;
         this.show_chapter(0);
     }
 
@@ -74,10 +90,26 @@ class Ebook{
         var Contents=this.book_cur["contents"];
         var html_body='';
         html_body+='<div class="p-3 col-12">'+Contents[index].content+'</div>';
-        html_body+='<div class="col-6 text-center"><i class="fas fa-step-backward text-primary"></i></div>';
-        html_body+='<div class="col-6 text-center"><i class="fas fa-step-forward text-primary"></i></div>';
+        html_body+='<div role="button" class="col-6 text-center" onclick="e.ebook.next_chapter();"><i class="fas fa-step-backward text-primary"></i></div>';
+        html_body+='<div role="button" class="col-6 text-center" onclick="e.ebook.prev_chapter();"><i class="fas fa-step-forward text-primary"></i></div>';
         $("#body_title").html(Contents[index].title);
         $("#all_item").html(html_body);
+    }
+
+    next_chapter(){
+        this.index_chapter_cur++;
+        this.show_chapter(this.index_chapter_cur);
+        this.reset_icon_chapter();
+    }
+
+    prev_chapter(){
+        this.index_chapter_cur++;
+        this.show_chapter(this.index_chapter_cur);
+        this.reset_icon_chapter();
+    }
+
+    reset_icon_chapter(){
+        $(".icon_read").css("color","black");
     }
 }
 var ebook=new Ebook();

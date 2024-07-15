@@ -21,10 +21,7 @@ class Ebook_Category{
         $.each(data,function(index,cat){
             var catEmp=e.box(cat.name,'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',cat.icon);
             $(catEmp).click(function(){
-                Swal.fire({
-                    title:"Category",
-                    Text:cat.name
-                })
+                e.cat.show_ebook_by_category(cat);
             });
             $("#all_box").append(catEmp);
         });
@@ -32,6 +29,23 @@ class Ebook_Category{
 
     view_all(){
         this.loadListByData(this.all_item);
+    }
+
+    show_ebook_by_category(cats){
+        var data=cats;
+        $("#main_title").html(data.name);
+
+        $("#all_box").html('');
+
+        $("#body_title").html("All books are in the category <b>"+data.name+"</b>");
+
+        $.each(data,function(k,v){
+            if(k=="name") return true;
+            if(k=="icon") return true;
+            $("#all_box").append('<div class="col-3">'+v+'</div>');
+        });
+
+        e.ebook.loadListByCat(cats.name);
     }
 }
 
