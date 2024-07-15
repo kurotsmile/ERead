@@ -52,6 +52,7 @@ class Ebook{
     }
 
     show_info(data){
+        this.index_chapter_cur=0;
         var Contents=data["contents"];
         var col='col-12';
         cr.top();
@@ -76,13 +77,15 @@ class Ebook{
 
         $.each(Contents,function(index,c){
             var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col);
+            empChapter.attr("id","c_"+index);
             $(empChapter).click(()=>{
+                e.ebook.index_chapter_cur=index;
                 e.ebook.show_chapter(index);
             });
             $("#all_box").append(empChapter);
         });
 
-        this.index_chapter_cur=0;
+        
         this.show_chapter(0);
     }
 
@@ -94,22 +97,22 @@ class Ebook{
         html_body+='<div role="button" class="col-6 text-center" onclick="e.ebook.prev_chapter();"><i class="fas fa-step-forward text-primary"></i></div>';
         $("#body_title").html(Contents[index].title);
         $("#all_item").html(html_body);
+        this.reset_icon_chapter();
     }
 
     next_chapter(){
         this.index_chapter_cur++;
         this.show_chapter(this.index_chapter_cur);
-        this.reset_icon_chapter();
     }
 
     prev_chapter(){
         this.index_chapter_cur++;
         this.show_chapter(this.index_chapter_cur);
-        this.reset_icon_chapter();
     }
 
     reset_icon_chapter(){
-        $(".icon_read").css("color","black");
+        $(".icon_read").css("color","gray");
+        $("#c_"+this.index_chapter_cur).find("i").css("color",cr.color_btn);
     }
 }
 var ebook=new Ebook();

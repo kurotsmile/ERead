@@ -50,6 +50,7 @@ class Eread{
     }
 
     show_pp(){
+        $("#all_box").html(this.loading());
         $("#main_title").html("Privacy Policy");
         cr.top();
         cr.show_pp("#all_box");
@@ -57,6 +58,7 @@ class Eread{
     }
 
     show_tos(){
+        $("#all_box").html(this.loading());
         $("#main_title").html("Terms Of Service");
         cr.top();
         cr.show_tos("#all_box");
