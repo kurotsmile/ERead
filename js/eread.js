@@ -65,6 +65,16 @@ class Eread{
         ebook.show_for_home();
     }
 
+    show_about(){
+        $("#all_box").html(this.loading());
+        $("#main_title").html("Terms Of Service");
+        cr.get("about/en.html",(data)=>{
+            $("#all_box").html(data);
+            e.ebook.show_for_home();
+            cr.top();
+        });
+    }
+
     loading(){
         return '<div class="col-12 text-center pt-1 pm-1"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
     }
