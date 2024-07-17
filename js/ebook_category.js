@@ -19,7 +19,7 @@ class Ebook_Category{
         $("#main_title").html("Book topics and categories");
         $("#all_box").html("");
         $.each(data,function(index,cat){
-            var catEmp=e.box(cat.name,'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',cat.icon);
+            var catEmp=e.box(cat.name,cat.name_en,"fas fa-book-reader");
             $(catEmp).click(function(){
                 e.cat.show_ebook_by_category(cat);
             });
@@ -33,6 +33,7 @@ class Ebook_Category{
 
     show_ebook_by_category(cats){
         var data=cats;
+        cr.go_to("#body_title");
         $("#main_title").html(data.name);
 
         $("#all_box").html('');

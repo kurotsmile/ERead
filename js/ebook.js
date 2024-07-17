@@ -79,6 +79,7 @@ class Ebook{
             var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col);
             empChapter.attr("id","c_"+index);
             $(empChapter).click(()=>{
+                cr.go_to("#body_title",70);
                 e.ebook.index_chapter_cur=index;
                 e.ebook.show_chapter(index);
             });
@@ -101,11 +102,13 @@ class Ebook{
     }
 
     next_chapter(){
+        cr.go_to("#body_title",70);
         this.index_chapter_cur++;
         this.show_chapter(this.index_chapter_cur);
     }
 
     prev_chapter(){
+        cr.go_to("#body_title",70);
         this.index_chapter_cur++;
         this.show_chapter(this.index_chapter_cur);
     }

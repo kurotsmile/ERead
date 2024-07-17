@@ -19,13 +19,13 @@ class Eread{
         ebook.show_for_home();
     }
 
-    box(name='@username',tip='Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',icon='',col='col-3'){
+    box(name='@username',tip='',icon='',col='col-3'){
         if(icon!='') icon='<i class="fas '+icon+'" style="color:#007bff"></i> ';
         var box_obj=$(`
             <div role="button" class="media text-muted pt-3 ${col}">
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                <img style="width:50px" src="images/author.png" alt="${name}" class="mr-2 rounded">
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">${icon}${name}</strong>
+                <strong class="d-block text-gray-dark">${icon} ${name}</strong>
                 ${tip}
                 </p>
             </div>
@@ -33,10 +33,10 @@ class Eread{
         return box_obj;
     }
 
-    item(name='Full Name',author='@Carrot',tip=''){
+    item(name='Name Book',author='@Carrot',tip=''){
         var itemEmp=$(`
             <div role="button" class="media text-muted pt-3 col-6">
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                <img style="width:50px" src="images/ebook2.png" alt="${name}" class="mr-2 rounded">
                 <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                         <div class="d-flex justify-content-between align-items-center w-100">
                         <strong class="text-gray-dark">${name}</strong>
@@ -48,6 +48,10 @@ class Eread{
             </div> 
         `);
         return itemEmp;
+    }
+
+    show_author(){
+        cr.loadJs("js/ebook_author.js","ebook_author","show");
     }
 
     show_pp(){
