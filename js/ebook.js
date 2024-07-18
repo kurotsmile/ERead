@@ -43,6 +43,7 @@ class Ebook{
 
     loadListByMeta(filed,val){
         $("#all_item").html("");
+        var is_found=false;
         $.each(this.all_item,function(index,book){
             if(book[filed]!=val) return true;
             var bookEmp=e.item(book.title,"@"+book[filed]);
@@ -51,7 +52,18 @@ class Ebook{
                 ebook.show_info(book);
             });
             $("#all_item").append(bookEmp);
+            is_found=true;
         });
+
+        if(!is_found){
+            var html='';
+            html+='<div class="col-12 text-center mt-3">';
+                html+='<p class="font-weight-bold mt-3">Empty list</p>';
+                html+='<p class="font-weight-light">There are currently no items in this list, our editorial team is in the process of updating and adding more data.</p>';
+                html+='<img src="images/404.png"/>'
+            html+='</div>';
+            $("#all_item").append(html);
+        }
     }
 
     view_all(){

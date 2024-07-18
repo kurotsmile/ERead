@@ -42,6 +42,7 @@ class Ebook_Category{
 
     show_ebook_by_category(cats){
         var data=cats;
+
         cr.go_to("#body_title");
         $("#main_title").html(data.name);
 
