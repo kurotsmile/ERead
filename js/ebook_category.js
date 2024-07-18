@@ -6,6 +6,7 @@ class Ebook_Category{
         if(this.all_item==null){
             $.getJSON(e.url_data_book_category, function (data) {
                 ebook_category.all_item=data["all_item"];
+                e.list_category=ebook_category.all_item;
                 var cats=cr.limitItem(cr.shuffle(ebook_category.all_item),12);
                 ebook_category.loadListByData(cats);
             });
@@ -46,7 +47,7 @@ class Ebook_Category{
             $("#all_box").append('<div class="col-3">'+v+'</div>');
         });
 
-        e.ebook.loadListByCat(cats.name);
+        e.ebook.loadListByMeta("category",cats.name);
     }
 }
 

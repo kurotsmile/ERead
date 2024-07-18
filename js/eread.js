@@ -3,6 +3,11 @@ class Eread{
     url_data_book_ebook="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/ebook.json";
     url_data_book_category="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/ebook_category.json";
 
+    list_ebook=null;
+    list_category=null;
+    list_author=null;
+    list_year=null;
+
     onLoad(){
         cr.onLoad();
         cr.setSiteName("ERead");
@@ -82,6 +87,22 @@ class Eread{
 
     loading(){
         return '<div class="col-12 text-center pt-1 pm-1"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+    }
+
+    addOrUpdateObjectToList(list_obj, data_obj_add) {
+        var addedOrUpdate = false;
+        for (var i = 0; i < list_obj.length; i++) {
+            if (list_obj[i].name === data_obj_add.name && list_obj[i].lang === data_obj_add.lang) {
+                list_obj[i].amount = (list_obj[i].amount || 0) + 1;
+                addedOrUpdate = true;
+                break;
+            }
+        }
+
+        if (!addedOrUpdate) {
+            data_obj_add.amount=1;
+            list_obj.push(data_obj_add);
+        }
     }
 }
 

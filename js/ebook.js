@@ -11,6 +11,7 @@ class Ebook{
         if(this.all_item==null){
             $.getJSON(e.url_data_book_ebook, function (data) {
                 ebook.all_item=data["all_item"];
+                e.list_ebook=ebook.all_item;
                 var cats=cr.limitItem(cr.shuffle(ebook.all_item),20);
                 ebook.loadListByData(cats);
             });
@@ -33,10 +34,10 @@ class Ebook{
         });
     }
 
-    loadListByCat(id_cat){
+    loadListByMeta(filed,val){
         $("#all_item").html("");
         $.each(this.all_item,function(index,book){
-            if(book.category!=id_cat) return true;
+            if(book[filed]!=val) return true;
             var bookEmp=e.item(book.title,"@"+book.author);
             $(bookEmp).click(function(){
                 e.ebook.book_cur=book;
