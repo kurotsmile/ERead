@@ -1,0 +1,36 @@
+{
+    "name": "ERead",
+    "short_name": "eread_now",
+    "description": "ERead is a web app that helps users read and download ebooks. It provides a vast collection of books and novels accessible on PC, tablet, and phone software.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "images/icon/128x128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "images/icon/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "images/icon/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "scope": "/",
+    "permissions": [
+      "storage",
+      "notifications",
+      "audio",
+      "video"
+    ],
+    "author": "Tran Thien Thanh",
+    "version": "1.0.0"
+  }
+  

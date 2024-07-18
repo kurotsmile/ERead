@@ -24,28 +24,27 @@
     <link href="css/animate.min.css" rel="stylesheet"/>
     <link href="css/style.css?v=12" rel="stylesheet"/>
     <script src="Carrot-Framework-Web/Carrot.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.8/holder.js"></script>
-
+    <link href="manifest.json?ver=1.10" rel="manifest" />
   </head>
 
   <body class="bg-light">
 
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#" onclick="e.show_home()"><img src="images/icon.png" style="width: 25px;"/> ERead</a>
+      <a class="navbar-brand" href="#" onclick="e.show_home();return false;"><img src="images/icon.png" style="width: 25px;"/> ERead</a>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a class="nav-link" href="#" onclick="e.show_home()">All EBook <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item active"><a class="nav-link" href="#" onclick="e.show_home();return false;">All EBook <span class="sr-only">(current)</span></a></li>
           <li class="nav-item"><a class="nav-link" href="#" onclick="e.show_author();return false;">Author</a></li>
           <li class="nav-item"><a class="nav-link" href="#" onclick="e.cat.show();return false;">Genre</a></li>
           <li class="nav-item"><a class="nav-link" href="#" onclick="e.show_year();return false;">Year</a></li>
           <li class="nav-item"><a class="nav-link" href="#" >Write a book</a></li>
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="#" onclick="e.show_about();return false;">About ERead</a>
               <a class="dropdown-item" href="#" onclick="cr.show_contact();return false;">Contact</a>
