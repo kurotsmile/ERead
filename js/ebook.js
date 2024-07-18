@@ -76,12 +76,18 @@ class Ebook{
         $("#all_box").append('<div class="col-12 mt-3"><h6 class="mb-0">Table of contents</h6></div>');
 
         $.each(Contents,function(index,c){
-            var empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col);
+            var empChapter=null;
+            if(index==e.ebook.index_chapter_cur)
+                empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col,'images/ebook_chapter.png');
+            else
+                empChapter=e.box(c.title,'Chapter '+(index+1),'fas fa-eye icon_read',col,'images/chapter_open.png');
+
             empChapter.attr("id","c_"+index);
             $(empChapter).click(()=>{
                 cr.go_to("#body_title",70);
                 e.ebook.index_chapter_cur=index;
                 e.ebook.show_chapter(index);
+                $(empChapter).find("img").attr("src",'images/ebook_chapter.png');
             });
             $("#all_box").append(empChapter);
         });

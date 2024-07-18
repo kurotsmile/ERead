@@ -19,11 +19,11 @@ class Eread{
         ebook.show_for_home();
     }
 
-    box(name='@username',tip='',icon='',col='col-3'){
+    box(name='Box Name',tip='',icon='',col='col-3',url_img='images/author.png'){
         if(icon!='') icon='<i class="fas '+icon+'" style="color:#007bff"></i> ';
         var box_obj=$(`
             <div role="button" class="media text-muted pt-3 ${col}">
-                <img style="width:50px" src="images/author.png" alt="${name}" class="mr-2 rounded">
+                <img style="width:50px" src="${url_img}" alt="${name}" class="mr-2 rounded">
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                 <strong class="d-block text-gray-dark">${icon} ${name}</strong>
                 ${tip}
@@ -40,7 +40,7 @@ class Eread{
                 <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                         <div class="d-flex justify-content-between align-items-center w-100">
                         <strong class="text-gray-dark">${name}</strong>
-                            <a href="#">Read Now</a>
+                            <a href="#" onclick="return false;">Read Now</a>
                         </div>
                         <span class="d-block">${author}</span>
                         ${tip}
