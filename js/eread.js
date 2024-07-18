@@ -59,6 +59,10 @@ class Eread{
         cr.loadJs("js/ebook_author.js","ebook_author","show");
     }
 
+    show_year(){
+        cr.loadJs("js/ebook_year.js","ebook_year","show");
+    }
+
     show_pp(){
         $("#all_box").html(this.loading());
         $("#main_title").html("Privacy Policy");

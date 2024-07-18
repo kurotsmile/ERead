@@ -1,6 +1,11 @@
 html,
 body {
-  overflow-x: hidden; /* Prevent scroll on narrow devices */
+    overflow-x: hidden; 
+    background: url("../images/bk.png");
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 100%;
+    background-attachment: fixed;
 }
 
 body {

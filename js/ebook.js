@@ -12,6 +12,13 @@ class Ebook{
             $.getJSON(e.url_data_book_ebook, function (data) {
                 ebook.all_item=data["all_item"];
                 e.list_ebook=ebook.all_item;
+
+                e.list_category=[];
+                $.each(e.list_ebook,function(index,ebook){
+                    var catObj={"name":ebook.category,"lang":ebook.lang};
+                    e.addOrUpdateObjectToList(e.list_category,catObj);
+                });
+
                 var cats=cr.limitItem(cr.shuffle(ebook.all_item),20);
                 ebook.loadListByData(cats);
             });
@@ -38,7 +45,7 @@ class Ebook{
         $("#all_item").html("");
         $.each(this.all_item,function(index,book){
             if(book[filed]!=val) return true;
-            var bookEmp=e.item(book.title,"@"+book.author);
+            var bookEmp=e.item(book.title,"@"+book[filed]);
             $(bookEmp).click(function(){
                 e.ebook.book_cur=book;
                 ebook.show_info(book);
@@ -69,10 +76,10 @@ class Ebook{
         $("#main_title").html(data.title);
         $("#all_box").append('<div class="col-8">'+data.describe+'</div>');
         $("#all_box").append('<div class="col-4 text-center"><img class="rounded w-100" src="images/icon.png"/><br/><button class="btn  btn-primary m-3" onclick="cr.show_pay();"><i class="fas fa-download"></i> Download Ebook ('+data.title+'.epub)</button></div>');
-        $("#all_box").append(e.box('Author',data.author,'fas fa-user-graduate'));
-        $("#all_box").append(e.box('Language',data.lang,'fas fa-globe'));
-        $("#all_box").append(e.box('Category',data.category,'fas fa-mosque'));
-        $("#all_box").append(e.box('Chapter',data.contents.length,'fas fa-swatchbook'));
+        $("#all_box").append(e.box('Author',data.author,'fas fa-user-graduate','col-3','images/item_info.png'));
+        $("#all_box").append(e.box('Language',data.lang,'fas fa-globe','col-3','images/item_info.png'));
+        $("#all_box").append(e.box('Category',data.category,'fas fa-mosque','col-3','images/item_info.png'));
+        $("#all_box").append(e.box('Chapter',data.contents.length,'fas fa-swatchbook','col-3','images/item_info.png'));
 
         $("#all_box").append('<div class="col-12 mt-3"><h6 class="mb-0">Table of contents</h6></div>');
 
